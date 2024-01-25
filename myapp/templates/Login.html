@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Iniciar Sesión</title>
+  <link rel="stylesheet" href="{%static '/Styles.css' %}">
+  <link rel="stylesheet" href="{%static '/fonts.css' %}">
+</head>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById('motos').addEventListener('click', function () {
+      var submenu = document.getElementById('submenu-motos');
+      if (submenu.style.display === 'block') {
+        submenu.style.display = 'none';
+      } else {
+        submenu.style.display = 'block';
+      }
+    });
+    document.addEventListener('click', function (event) {
+      var submenu = document.getElementById('submenu-motos');
+      if (submenu.style.display === 'block' && event.target !== submenu && event.target !== document.getElementById('motos')) {
+        submenu.style.display = 'none';
+      }
+    });
+  });
+
+  // Definir las credenciales para cada sección
+  var credentials = {
+    repuestos: { usuario: 'juan', contraseña: 'juan', redirectUrl: '{% url "Repuestos" %}' },
+    revisiones: { usuario: 'juan', contraseña: 'juan', redirectUrl: '{% url "Revisiones" %}' },
+    usuarios: { usuario: 'juan', contraseña: 'juan', redirectUrl: '{% url "Usuarios" %}' },
+  };
+
+  document.addEventListener("DOMContentLoaded", function () {
+    // Función para manejar clic en las palabras clave
+    function handleClick(section) {
+      // Pedir usuario y contraseña usando window.prompt()
+      var username = prompt('Ingrese el nombre de usuario:');
+      var password = prompt('Ingrese la contraseña:');
+
+      // Verificar las credenciales
+      if (verificarCredenciales(username, password, section)) {
+        // Redirigir a la página correspondiente
+        window.location.href = credentials[section].redirectUrl;
+      } else {
+        alert('Credenciales incorrectas. Acceso denegado.');
+      }
+    }
+
+    // Función para verificar las credenciales
+    function verificarCredenciales(username, password, section) {
+      return (
+        username === credentials[section].usuario &&
+        password === credentials[section].contraseña
+      );
+    }
+
+    // Asociar funciones a las palabras clave
+    document.getElementById('repuestos').addEventListener('click', function () {
+      handleClick('repuestos');
+    });
+
+    document.getElementById('revisiones').addEventListener('click', function () {
+      handleClick('revisiones');
+    });
+
+    document.getElementById('usuarios').addEventListener('click', function () {
+      handleClick('usuarios');
+    });
+
+  });
+
+</script>
+
+<body>
+
+  <div class="contenedor">
+
+    <header>
+      <a href="#" id="motos">Admin &#9662;</a>
+      <div id="submenu-motos" class="submenu">
+        <a href="#" id="repuestos">REPUESTOS</a>
+        <a href="#" id="revisiones">REVISIONES</a>
+        <a href="#" id="usuarios">USUARIOS</a>
+      </div>
+      <a href="{% url 'registro' %}">Registrate</a>
+    </header>
+    <div class="login">
+      <article class="fondo">
+        <br> <br>
+        <h3>Inicio de Sesión</h3>
+        <form method="post">
+          {% csrf_token %}
+          <span class="icon-user"></span><input class="inp" type="text" name="usuario" required><br>
+          <span class="icon-key"></span><input class="inp" type="password" name="contraseña" required><br>
+          <a href="" class="he">He olvidado mi contraseña</a>
+          <input class="boton" type="submit" value="Iniciar Sesión">
+        </form>
+        <br> <br>
+      </article>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Registro</title>
+    <link rel="stylesheet" href="{%static '/estilos.css' %}">
+</head>
+
+<body>
+    <div class="contenedor">
+        <form class="form-register" method="post">
+            {% csrf_token %}
+            <h1>Registrate</h1>
+            <input class="controls" type="text" name="usuario" required placeholder="Ingrese su Usuario"><br>
+            <input class="controls" type="text" name="nombre" required placeholder="Ingrese su Nombre"><br>
+            <input class="controls" type="text" name="telefono" required placeholder="Ingrese su Telefono"><br>
+            <input class="controls" type="text" name="edad" required placeholder="Ingrese su Edad"><br>
+            <input class="controls" type="text" name="pais" required placeholder="Ingrese su Pais"><br>
+            <input class="controls" type="password" name="contraseña" required placeholder="Ingrese su Contraseña"><br>
+            <input type="checkbox" id="acepto-terminos-y-condiciones">
+            <label for="acepto-terminos-y-condiciones">Acepto los términos y condiciones</label>
+            <input class="botons" type="submit" value="Registrarse">
+            <p>Ya tengo una cuenta <a href="{% url 'login' %}"><strong><u>Iniciar Sesión</u></strong></a></p>
+        </form>
+    </div>
+</body>
+
+</html>

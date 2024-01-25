@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revisiones</title>
+    <link rel="stylesheet" href="{%static '/Formulario.css' %}">
+    <link rel="stylesheet" href="{%static '/normalize.css' %}">
+</head>
+
+<body>
+    <a href="{% url 'login' %}" class="regresar-button">Regresar al Login</a>
+    <h2>Ingresar Revisiones</h2>
+
+    <form method="post" action="{% url 'Revisiones' %}">
+        {% csrf_token %}
+        <label for="nombre">Codigo:</label>
+        <input type="text" id="codigo" name="codigo" required><br>
+
+        <label for="C_filtro">Cambio de filtro:</label>
+        <input type="text" id="C_filtro" name="C_filtro" required><br>
+
+        <label for="C_aceite">Cambio de aceite:</label>
+        <input type="text" id="C_aceite" name="C_aceite" required><br>
+
+        <label for="C_freno">Cambio de freno:</label>
+        <input type="text" id="C_freno" name="C_freno" required><br>
+
+        <label for="Revision_vehiculo">Revision de la Moto:</label>
+        <input type="text" id="Revision_vehiculo" name="Revision_vehiculo" required><br>
+
+        <input type="submit" value="Guardar">
+    </form>
+
+    {% if revisiones %}
+    <hr>
+    <h2>Lista de Revisiones</h2>
+    <table border="1">
+        <tr>
+
+            <th>Codigo</th>
+            <th>Cambio de filtro</th>
+            <th>Cambio de aceite</th>
+            <th>Cambio de freno</th>
+            <th>Revision de la Moto</th>
+            <th>Acciones</th>
+        </tr>
+        {% for revision in revisiones %}
+        <tr>
+            <td>{{ revision.codigo }}</td>
+            <td>{{ revision.C_filtro }}</td>
+            <td>{{ revision.C_aceite }}</td>
+            <td>{{ revision.C_freno }}</td>
+            <td>{{ revision.Revision_vehiculo }}</td>
+            <td>
+                <a class="editar" href="{% url 'editar_revisiones' revision.id %}">Editar</a> |
+                <a class="eliminar" href="{% url 'eliminar_revisiones' revision.id %}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% if revisiones_editar %}
+    <hr>
+    <h2>Editar Revisiones</h2>
+    <form method="post" action="{% url 'editar_revisiones' revisiones_editar.id %}">
+        {% csrf_token %}
+        <label for="codigo">Codigo:</label>
+        <input type="text" id="codigo" name="codigo" value="{{ revisiones_editar.codigo }}" required><br>
+
+        <label for="C_filtro">Cambio de filtro:</label>
+        <input type="text" id="C_filtro" name="C_filtro" value="{{ revisiones_editar.C_filtro }}" required><br>
+
+        <label for="C_aceite">Cambio de aceite:</label>
+        <input type="text" id="C_aceite" name="C_aceite" value="{{ revisiones_editar.C_aceite }}" required><br>
+
+        <label for="C_freno">Cambio de freno:</label>
+        <input type="text" id="C_freno" name="C_freno" value="{{ revisiones_editar.C_freno }}" required><br>
+
+        <label for="Revision_vehiculo">Revision de la Moto:</label>
+        <input type="text" id="Revision_vehiculo" name="Revision_vehiculo"
+            value="{{ revisiones_editar.Revision_vehiculo }}" required><br>
+
+        <input type="submit" value="Guardar Cambios">
+    </form>
+    {% endif %}
+    {% else %}
+    <p>No hay Revisiones disponibles.</p>
+    {% endif %}
+</body>
+
+</html>

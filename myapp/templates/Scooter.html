@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Scooter</title>
+    <link rel="stylesheet" href="{%static '/info.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{%static '/normalize.css' %}">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: chocolate;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="contenedor contenido-header">
+            <div class="barra">
+                <a href="index.html">
+                    <img src="{%static '/img/logotipo.svg' %}" alt=" LogoTipo ">
+                </a>
+                <nav class="navegacion">
+                    <a href="#" id="motos">Motos &#9662;</a>
+                    <div id="submenu-motos" class="submenu">
+                        <a href="{% url 'Urbana' %}">URBANA</a>
+                        <a href="{% url 'Deportiva' %}">DEPORTIVA</a>
+                        <a href="{% url 'Enduro' %}">MOTOCROSS/ENDURO</a>
+                        <a href="{% url 'Scooter' %}">SCOOTER</a>
+                        <a href="{% url 'Hyper' %}">HYPER NAKED</a>
+                        <a href="{% url 'Adventure' %}">ADVENTURE</a>
+                    </div>
+                    <a href="{% url 'informacion' %}">Menu Principal</a>
+                    <a href="{% url 'login' %}">Cerrar Sesion</a>
+                </nav>
+            </div> <!--Termino barra-->
+
+        </div> <!--Final Contenedor-->
+    </header>
+
+    <main class="seccion contenedor">
+        <h2 class="fw-300 centrar-texto">Motos Scooter</h2>
+
+        <div class="contenedor-anuncios">
+            <div class="anuncio">
+                <img src="{%static '/img/XTZ-125.jpg' %}" alt="">
+                <div class="contenido-anuncio">
+                    <h3>Yahama XTZ-125</h3>
+                    <ul>
+                        <li>
+                            <p>4 tiempos SOHC, enfriado por aire, monocilíndrico.</p>
+                        </li>
+                        <li>
+                            <p>5 velocidades, engrane constante, cadena.</p>
+                        </li>
+                        <li>
+                            <p>Parrilla trasera</p>
+                        </li>
+                    </ul>
+                    <p class="precio">2.149.000</p>
+                    <div>
+                        <h6><img src="{%static '/img/cilindraje.svg' %}" alt=""> Cilindraje: 125</h6>
+                        <h6><img src="{%static '/img/casco.svg' %}" alt=""> Cascos: 2 </h6>
+                    </div>
+                    <a href="" class="boton boton-amarillo d-block">Agregar</a>
+                </div>
+            </div>
+
+            <div class="anuncio">
+                <img src="{%static '/img/XTZ-125.jpg' %}" alt="Imagen casa con terminado de lujo">
+                <div class="contenido-anuncio">
+                    <h3>Yahama XTZ-125</h3>
+                    <ul>
+                        <li>
+                            <p>4 tiempos SOHC, enfriado por aire, monocilíndrico.</p>
+                        </li>
+                        <li>
+                            <p>5 velocidades, engrane constante, cadena.</p>
+                        </li>
+                        <li>
+                            <p>Parrilla trasera</p>
+                        </li>
+                    </ul>
+                    <p class="precio">2.149.000</p>
+                    <div>
+                        <h6><img src="{%static '/img/cilindraje.svg' %}" alt=""> Cilindraje: 125</h6>
+                        <h6><img src="{%static '/img/casco.svg' %}" alt=""> Cascos: 2 </h6>
+                    </div>
+                    <a href="" class="boton boton-amarillo d-block">Agregar</a>
+                </div>
+            </div>
+
+            <div class="anuncio">
+                <img src="{%static '/img/XTZ-125.jpg' %}" alt="Imagen casa con terminado de lujo">
+                <div class="contenido-anuncio">
+                    <h3>Yahama XTZ-125</h3>
+                    <ul>
+                        <li>
+                            <p>4 tiempos SOHC, enfriado por aire, monocilíndrico.</p>
+                        </li>
+                        <li>
+                            <p>5 velocidades, engrane constante, cadena.</p>
+                        </li>
+                        <li>
+                            <p>Parrilla trasera</p>
+                        </li>
+                    </ul>
+                    <p class="precio">2.149.000</p>
+                    <div>
+                        <h6><img src="{%static '/img/cilindraje.svg' %}" alt=""> Cilindraje: 125</h6>
+                        <h6><img src="{%static '/img/casco.svg' %}" alt=""> Cascos: 2 </h6>
+                    </div>
+                    <a href="" class="boton boton-amarillo d-block">Agregar</a>
+                </div>
+            </div> <!--Anuncio-->
+
+    </main>
+
+    <footer class="site-footer seccion">
+        <div class="contenedor contenedor-footer">
+            <nav class="navegacion">
+
+            </nav>
+            <p class="copyright">Esta pagina es de entorno educativo &copy: 2023 </p>
+        </div>
+    </footer>
+</body>
+
+</html>

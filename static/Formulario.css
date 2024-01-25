@@ -1,0 +1,172 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    flex-direction: column;
+    /* Cambio en la dirección de flexión a columna */
+}
+
+h2 {
+    color: #333;
+}
+
+form {
+    margin-top: 50px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-bottom: 12px;
+    color: #333;
+    font-size: 18px;
+}
+
+form input[type="text"],
+form input[type="number"] {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    /* Cambia la fuente de los campos de entrada */
+}
+
+form input[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 6px;
+    background-color: #0066cc;
+    color: #fff;
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+    /* Cambia la fuente del botón de envío */
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: #004080;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table,
+th,
+td {
+    border: 1px solid #333;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para los botones */
+input[type="submit"],
+button,
+a.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid #0066cc;
+    background-color: #0066cc;
+    color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover,
+button:hover,
+a.button:hover {
+    background-color: #004080;
+}
+
+/* Estilos específicos para los enlaces de Editar y Eliminar */
+a.editar {
+    border: 1px solid #4CAF50;
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+a.editar:hover {
+    background-color: #45a049;
+}
+
+a.eliminar {
+    border: 1px solid #ff3333;
+    background-color: #ff3333;
+    color: #fff;
+}
+
+a.eliminar:hover {
+    background-color: #cc0000;
+}
+
+.regresar-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background-color: #0066cc;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.regresar-button:hover {
+    background-color: #004080;
+}
+
+/* Estilos para los botones de editar y eliminar */
+.editar-button,
+.eliminar-button {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 5px;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.editar-button {
+    background-color: #4CAF50;
+}
+
+.eliminar-button {
+    background-color: #f44336;
+}

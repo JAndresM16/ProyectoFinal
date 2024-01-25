@@ -1,0 +1,160 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Motos</title>
+    <link rel="stylesheet" href="{%static '/info.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{%static '/normalize.css' %}">
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById('motos').addEventListener('click', function () {
+                var submenu = document.getElementById('submenu-motos');
+                if (submenu.style.display === 'block') {
+                    submenu.style.display = 'none';
+                } else {
+                    submenu.style.display = 'block';
+                }
+            });
+            document.addEventListener('click', function (event) {
+                var submenu = document.getElementById('submenu-motos');
+                if (submenu.style.display === 'block' && event.target !== submenu && event.target !== document.getElementById('motos')) {
+                    submenu.style.display = 'none';
+                }
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            let currentSlide = 0;
+            const carouselItems = document.querySelectorAll(".carousel-item");
+            const prevButton = document.getElementById("prev-button");
+            const nextButton = document.getElementById("next-button");
+
+            function showSlide(slideIndex) {
+                if (slideIndex < 0) {
+                    slideIndex = carouselItems.length - 1;
+                } else if (slideIndex >= carouselItems.length) {
+                    slideIndex = 0;
+                }
+
+                for (let i = 0; i < carouselItems.length; i++) {
+                    carouselItems[i].style.opacity = 0;
+                    carouselItems[i].style.zIndex = 0;
+                }
+
+                carouselItems[slideIndex].style.opacity = 1;
+                carouselItems[slideIndex].style.zIndex = 1;
+                currentSlide = slideIndex;
+            }
+
+            function nextSlide() {
+                showSlide(currentSlide + 1);
+            }
+
+            function prevSlide() {
+                showSlide(currentSlide - 1);
+            }
+            setInterval(nextSlide, 5000);
+            showSlide(0);
+            nextButton.addEventListener("click", nextSlide);
+            prevButton.addEventListener("click", prevSlide);
+        });
+
+
+    </script>
+</head>
+
+<body>
+    <header class="side-header inicio">
+        <div class="side-header inicio">
+            <div class="contenedor contenido-header">
+                <div class="barra">
+                    <a href="/">
+                        <img src="{%static '/img/logotipo.svg' %}" alt="Logotipo">
+                    </a>
+                    <nav class="navegacion">
+                        <a href="#" id="motos">Motos &#9662;</a>
+                        <div id="submenu-motos" class="submenu">
+                            <a href="{% url 'Urbana' %}">URBANA</a>
+                            <a href="{% url 'Deportiva' %}">DEPORTIVA</a>
+                            <a href="{% url 'Enduro' %}">MOTOCROSS/ENDURO</a>
+                            <a href="{% url 'Scooter' %}">SCOOTER</a>
+                            <a href="{% url 'Hyper' %}">HYPER NAKED</a>
+                            <a href="{% url 'Adventure' %}">ADVENTURE</a>
+                        </div>
+                        <a href="{% url 'Comprar_Repuesto' %}">Repuesto</a>
+                        <a href="{% url 'login' %}">Cerrar Sesion</a>
+                    </nav>
+                </div>
+                <div id="header-carousel" class="carousel">
+                    <div class="carousel-item active">
+                        <img src="{%static '/img/motodeportiva.jpg' %}" alt="Carrusel Imagen 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{%static '/img/motocross.jpg' %}" alt="Carrusel Imagen 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{%static '/img/motoscooter.webp' %}" alt="Carrusel Imagen 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{%static '/img/motourbana.jpeg' %}" alt="Carrusel Imagen 4">
+                    </div>
+                </div>
+                <button id="prev-button" class="carousel-button">
+                    < </button>
+                        <button id="next-button" class="carousel-button"> > </button>
+            </div>
+        </div>
+
+    </header class="side-header inicio">
+
+    <section class="contenedor seccion">
+        <h5>SUBETE A UNA MOTO</h5>
+        <div class="iconos-nosotros">
+
+            <div class="icono">
+                <a href="{% url 'Hyper' %}">
+                    <img src="{%static '/img/img1.jpg' %}" alt="">
+                </a>
+                <a href="{% url 'Scooter' %}">
+                    <img src="{%static '/img/img5.jpg' %}" alt="">
+                </a>
+            </div>
+
+            <div class="icono">
+                <br><br>
+                <a href="{% url 'Deportiva' %}">
+                    <img src="{%static '/img/img2.jpg' %}" alt="">
+                </a>
+                <a href="{% url 'Urbana' %}">
+                    <img src="{%static '/img/img7.jpg' %}" alt="">
+                </a>
+            </div>
+
+            <div class="icono">
+                <a href="{% url 'Enduro' %}">
+                    <img src="{%static '/img/img3.jpg' %}" alt="">
+                </a>
+                <a href="{% url 'Adventure' %}">
+                    <img src="{%static '/img/img4.jpg' %}" alt="">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer seccion">
+        <div class="contenedor contenedor-footer">
+            <nav class="navegacion">
+
+            </nav>
+            <p class="copyright">Esta pagina es de entorno educativo &copy: 2023 </p>
+        </div>
+    </footer>
+</body>
+
+</html>
